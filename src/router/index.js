@@ -20,7 +20,7 @@ export default new Router({
       name: 'bmi',
       component: anyBmi,
       meta: {
-        title: "指数"
+        title: "身体质量指数"
       }
     }
   ]

@@ -10,6 +10,11 @@ import anyHeader from '@com/common/header'
 import "./assets/css/common.css"
 export default {
   name: 'App',
+  data () {
+    return {
+      commonMav: []
+    }
+  },
   components: {
     anyHeader
   }

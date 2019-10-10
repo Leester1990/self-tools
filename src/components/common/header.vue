@@ -1,5 +1,9 @@
 <template>
-  <van-nav-bar :title="$route.meta.title" left-arrow>
+  <van-nav-bar
+    :title="$route.meta.title"
+    left-arrow
+    @click-left="goBack"
+  >
     <van-icon name="ellipsis" slot="right" />
   </van-nav-bar>
 </template>
@@ -8,6 +12,11 @@
   export default {
     name: "any-header",
     mounted() {
+    },
+    methods: {
+      goBack () {
+        this.$router.go(-1);
+      }
     }
   }
 </script>

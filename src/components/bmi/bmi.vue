@@ -17,6 +17,15 @@
     <div class="container btn-area">
       <van-button type="info" @click="cfm">确定</van-button>
     </div>
+
+    <div class="container" v-if="progress.per > 0">
+      <van-progress
+        :percentage="progress.per"
+        :pivot-text="progress.text"
+        :pivot-color="progress.pColor"
+        :color="progress.color"
+      />
+    </div>
   </div>
 </template>
 
@@ -28,7 +37,13 @@
       return {
         height: "",
         weight: "",
-        bmi: 0
+        bmi: 0,
+        progress: {
+          per: 0,
+          text: "",
+          pColor: "",
+          color: ""
+        }
       }
     },
     methods: {
@@ -39,6 +54,32 @@
           bmi = 0;
         bmi = this.weight / (hei * hei);
         this.bmi = bmi.toFixed(1);
+        this.getBmiLevel(Number(this.bmi));
+      },
+      getBmiLevel (num) {
+        console.log(num);
+        if(num <= 18.4) {
+          this.progress.per = 25;
+          this.progress.text = "偏瘦";
+          this.progress.pColor = "#00b7ff";
+          this.progress.color = "linear-gradient(to right, #05CBFF, #00b7ff)";
+        } else if (num >= 18.5 && num <= 23.9) {
+          this.progress.per = 50;
+          this.progress.text = "正常";
+          this.progress.pColor = "#07C160";
+          this.progress.color = "linear-gradient(to right, #19C156, #07C160)";
+        } else if (num >= 24 && num <= 27.9) {
+          this.progress.per = 75;
+          this.progress.text = "过重";
+          this.progress.pColor = "#FFBF43";
+          this.progress.color = "linear-gradient(to right, #FFCE33, #FFBF43)";
+        } else if (num >= 28) {
+          this.progress.per = 100;
+          this.progress.text = "肥胖";
+          this.progress.pColor = "#F61D1D";
+          this.progress.color = "linear-gradient(to right, #F64418, #F61D1D)";
+        }
+        console.log(JSON.stringify(this.progress));
       }
     }
   }
@@ -46,6 +87,7 @@
 
 <style scoped lang="less">
   .btn-area {
+    padding: .8rem;
     button {
       width: 100%;
     }
