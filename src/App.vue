@@ -1,23 +1,30 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <anyHeader></anyHeader>
     <router-view/>
   </div>
 </template>
 
 <script>
+import anyHeader from '@com/common/header'
+import "./assets/css/common.css"
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    anyHeader
+  }
 }
 </script>
 
-<style>
+<style lang="less">
+@import "assets/css/var";
+body {
+  background-color: @theme-f9;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: @theme-black;
 }
 </style>
