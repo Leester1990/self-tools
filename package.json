@@ -1,7 +1,7 @@
 {
-  "name": "ddddddd",
+  "name": "个人工具箱",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "这是我的个人常用工具箱",
   "author": "LoverYmiss <47802178@qq.com>",
   "private": true,
   "scripts": {
