@@ -5,8 +5,9 @@ Vue.use(Router)
 
 const anyHome = resolve => require(['@com/home/home'], resolve);
 const anyBmi = resolve => require(['@com/bmi/bmi'], resolve);
+const anyCar = resolve => require(['@com/car/car'], resolve);
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -23,5 +24,19 @@ export default new Router({
         title: "身体质量指数"
       }
     }
+    ,{
+      path: '/car',
+      name: 'car',
+      component: anyCar,
+      meta: {
+        title: "车牌名称"
+      }
+    }
   ]
-})
+});
+
+router.beforeEach((to, from, next) => {
+  next();
+});
+
+export default router;

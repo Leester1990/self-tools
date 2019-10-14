@@ -5,6 +5,8 @@ import App from './App'
 import router from './router'
 import Vant from 'vant'
 import 'vant/lib/index.css'
+import VConsole from "vconsole"
+var vConsole = new VConsole();
 
 Vue.config.productionTip = false
 Vue.use(Vant)

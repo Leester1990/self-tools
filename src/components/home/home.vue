@@ -27,6 +27,12 @@
           name: "身体质量指数",
           url: "/bmi",
           code: "ANY_BMI"
+        },
+        {
+          id: 2,
+          name: "车牌名称",
+          url: "/car",
+          code: "ANY_CAR"
         }
       ];
       this.menu = menu;

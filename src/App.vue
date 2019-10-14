@@ -8,6 +8,7 @@
 <script>
 import anyHeader from '@com/common/header'
 import "./assets/css/common.css"
+import "../static/plus/plusReady"
 export default {
   name: 'App',
   data () {
@@ -15,8 +16,18 @@ export default {
       commonMav: []
     }
   },
+  mounted () {
+
+  },
   components: {
     anyHeader
+  },
+  beforeRouteEnter (to, from, next) {
+    console.log(to);
+    console.log(from);
+    next(vm => {
+      // 通过 `vm` 访问组件实例
+    })
   }
 }
 </script>
