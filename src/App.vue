@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <anyHeader></anyHeader>
+    <!--<anyHeader></anyHeader>-->
     <router-view/>
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
 
   },
   components: {
-    anyHeader
+    /*anyHeader*/
   },
   beforeRouteEnter (to, from, next) {
     console.log(to);

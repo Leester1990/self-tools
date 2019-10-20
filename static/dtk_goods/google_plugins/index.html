@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="./css/custom.css">
+	</head>
+	<body>
+		<div id="dtk-page-container-get">
+			<div class="output-page">你当前的页面为：<span id="cur-page"></span></div>
+			<div class="btn-area">
+				<a href="javascript:;" class="btn btn-start">开始</a>
+				<a href="javascript:;" class="btn btn-stop">停止</a>
+			</div>
+		</div>
+	</body>
+	<script>
+		var a = salesResetNum("9489");
+		var b = salesResetNum("289");
+		var c = salesResetNum("2.5万");
+		var d = salesResetNum("17.3万");
+		console.log(a);
+		console.log(b);
+		console.log(c);
+		console.log(d);
+
+		$("#goodsScreenCheckbox .label_list label").each(function () {
+			var inpuDom = $(this).find("input[name='cid']");
+			var title = inpuDom.attr("data-title");
+			var val = inpuDom.val();
+			if(title != undefined) {
+				console.log(title, val);
+			}
+		});
+
+		function salesResetNum(num) {
+			if(/(万)/g.test(num)) {
+				return num.replace(/(万|\.)/g, "") + "332";
+			} else {
+				return num;
+			}
+		}
+	</script>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>所有数据页</title>
+</head>
+<body>
+
+</body>
+<script src="../jquery-2.js"></script>
+<script src="./nz.js"></script>
+<script src="./xp.js"></script>
+<script src="./jjry.js"></script>
+<script src="./ms-all.js"></script>
+<script src="./my.js"></script>
+<script src="./mz.js"></script>
+<script src="./nvz.js"></script>
+<script src="./smjd.js"></script>
+<script src="./wycp.js"></script>
+<script src="./ny.js"></script>
+<script src="./jz.js"></script>
+<script src="./xb.js"></script>
+<script src="./hwyd.js"></script>
+<script src="./ps.js"></script>
+<script>
+  /*console.log("男装");
+  console.log(nz);
+  console.log("鞋品");
+  console.log(xp);
+  console.log("美食");
+  console.log(ms);
+  console.log("家居日用");
+  //console.log(Object.assign(jjry, jjry1));
+  console.log(jjry.concat(jjry1));
+  console.log("母婴");
+  console.log(my);
+  console.log("美妆");
+  console.log(mz);
+  console.log("女装");
+  console.log(nvz);
+  console.log("数码家电");
+  console.log(smjd);
+  console.log("文娱车品");
+  console.log(wycp);
+  console.log("内衣");
+  console.log(ny);
+  console.log("家装");
+  console.log(jz);
+  console.log("箱包");
+  console.log(xb);
+  console.log("户外运动");
+  console.log(hwyd);
+  console.log("配饰");
+  console.log(ps);*/
+
+  console.log("总数据");
+  var allTotal = nz.concat(hwyd, jjry, jz, ms, my, mz, nvz, ny, ps, smjd, wycp, xb, xp);
+  /*allTotal.forEach(item => {
+    var id = parseInt(item.id);
+    console.log(id);
+  })*/
+
+  function sortId(a, b) {
+    return a.id-b.id
+  };
+
+  // 最简单数组去重法
+  /*
+  * 新建一新数组，遍历传入数组，值不在新数组就push进该新数组中
+  * IE8以下不支持数组的indexOf方法
+  * */
+  function uniq(array){
+    var temp = []; //一个新的临时数组
+    for(var i = 0; i < array.length; i++){
+      if(temp.indexOf(array[i].id) == -1){
+        temp.push(array[i]);
+      }
+    }
+    return temp;
+  }
+
+  var newTotal = allTotal.sort(sortId);
+  var goodsList = uniq(newTotal);
+  goodsList.forEach(item => {
+    var id = parseInt(item.id);
+    console.log(id);
+  })
+  console.log("-------------------------------------------");
+  console.log(goodsList);
+</script>
+</html>

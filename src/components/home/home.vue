@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+      <comHeader :title="'首页'"></comHeader>
       <van-cell-group>
         <van-cell
           v-for="item in menu"
@@ -13,12 +14,16 @@
 </template>
 
 <script>
+  import comHeader from "../common/header"
   export default {
     name: "home",
     data () {
       return {
         menu: []
       }
+    },
+    components: {
+      comHeader
     },
     mounted() {
       const menu = [
