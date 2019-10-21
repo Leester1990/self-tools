@@ -7,7 +7,7 @@
 <body>
 
 </body>
-<script src="../jquery-2.js"></script>
+<script src="./common.js"></script>
 <script src="./nz.js"></script>
 <script src="./xp.js"></script>
 <script src="./jjry.js"></script>
@@ -23,69 +23,66 @@
 <script src="./hwyd.js"></script>
 <script src="./ps.js"></script>
 <script>
-  /*console.log("男装");
-  console.log(nz);
-  console.log("鞋品");
-  console.log(xp);
-  console.log("美食");
-  console.log(ms);
-  console.log("家居日用");
-  //console.log(Object.assign(jjry, jjry1));
-  console.log(jjry.concat(jjry1));
-  console.log("母婴");
-  console.log(my);
-  console.log("美妆");
-  console.log(mz);
-  console.log("女装");
-  console.log(nvz);
-  console.log("数码家电");
-  console.log(smjd);
-  console.log("文娱车品");
-  console.log(wycp);
-  console.log("内衣");
-  console.log(ny);
-  console.log("家装");
-  console.log(jz);
-  console.log("箱包");
-  console.log(xb);
-  console.log("户外运动");
-  console.log(hwyd);
-  console.log("配饰");
-  console.log(ps);*/
-
   console.log("总数据");
   var allTotal = nz.concat(hwyd, jjry, jz, ms, my, mz, nvz, ny, ps, smjd, wycp, xb, xp);
-  /*allTotal.forEach(item => {
-    var id = parseInt(item.id);
-    console.log(id);
-  })*/
+  console.log(`总数据有：${allTotal.length}条`);
 
-  function sortId(a, b) {
-    return a.id-b.id
+  var newTotal = allTotal.sort(common.sortId);
+  var goodsUniq = common.selfUnique(newTotal, "id");
+  console.log(`去重后数据：${goodsUniq.length}条`);
+
+  var commonObj = {
+    child1: [],
+    child2: [],
+    child3: [],
+    child4: [],
+    child5: [],
+    child6: [],
+    child7: [],
+    child8: [],
+    child9: [],
+    child10: [],
+    child11: [],
+    child12: [],
+    child13: [],
+    child14: [],
+    child15: [],
+    child16: [],
+    child17: [],
+    child18: [],
+    child19: [],
+    child20: [],
+    child21: [],
+    child22: [],
+    child23: [],
+    child24: [],
+    child25: [],
+    child26: [],
+    child27: [],
+    child28: [],
   };
 
-  // 最简单数组去重法
-  /*
-  * 新建一新数组，遍历传入数组，值不在新数组就push进该新数组中
-  * IE8以下不支持数组的indexOf方法
-  * */
-  function uniq(array){
-    var temp = []; //一个新的临时数组
-    for(var i = 0; i < array.length; i++){
-      if(temp.indexOf(array[i].id) == -1){
-        temp.push(array[i]);
-      }
+  var resetInfo = {
+    total: goodsUniq.length,
+    def: 1,
+    max: 5000,
+    now: 0
+  };
+
+  for(var i = 0; i < resetInfo.total; i++) {
+    if(resetInfo.now >= resetInfo.max) {
+      resetInfo.now = 0;
+      resetInfo.def = resetInfo.def + 1;
     }
-    return temp;
+    commonObj["child" + resetInfo.def].push(goodsUniq[i]);
+    resetInfo.now++;
   }
 
-  var newTotal = allTotal.sort(sortId);
-  var goodsList = uniq(newTotal);
-  goodsList.forEach(item => {
-    var id = parseInt(item.id);
-    console.log(id);
-  })
-  console.log("-------------------------------------------");
-  console.log(goodsList);
+  for(var j = 1; j < 26; j++) {
+    //console.log(`%c当前数据为第${j}条`,'color: #fff; font-weight: bold;padding: 5px;background-color: red;');
+    //console.log(JSON.stringify(commonObj["child" + j]));
+    console.log(commonObj["child" + j][0].id);
+  }
+
 </script>
 </html>

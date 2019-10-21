@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="./xb.js"></script>
+<script>
+  function sortId(a, b) {
+    return a.id-b.id
+  }
+
+  function uniq(arr) {
+    return arr.filter((item, index)=> {
+      return arr.indexOf(parseInt(item)) === index
+    })
+  }
+
+  //利用数组原型对象上的includes方法
+  function unique5(arr){
+    var bArr= [];
+
+    for(var i=0; i<arr.length; i++){
+      if( !bArr.includes(parseInt(arr[i].id)) ){ // 如果bArr新数组包含当前循环item
+        bArr.push(arr[i]);
+      }
+    }
+    return bArr;
+  }
+
+  /**
+   * 数组去重
+   * @param arr 需要去重的数组
+   * @param key 需要判断的key值
+   * @returns {Array} 返回去重后的数据
+   */
+  function selfUnique(arr, key) {
+    var result = [];
+    var obj = {};
+    var len = arr.length;
+    for(var i = 0; i < len; i++) {
+      if(!obj[arr[i][key]]) {
+        result.push(arr[i]);
+        obj[arr[i][key]] = true;
+      }
+    }
+    return result;
+  }
+
+  var xbArr = xb.sort(sortId);
+  xbArr = selfUnique(xbArr, "id");
+
+  var commonObj = {
+    child1: [],
+    child2: [],
+    child3: [],
+    child4: [],
+    child5: [],
+    child6: [],
+    child7: [],
+    child8: [],
+    child9: [],
+    child10: [],
+    child11: [],
+    child12: [],
+    child13: [],
+    child14: [],
+    child15: [],
+    child16: [],
+    child17: [],
+    child18: [],
+    child19: [],
+    child20: [],
+    child21: [],
+    child22: [],
+    child23: [],
+    child24: [],
+    child25: [],
+    child26: [],
+    child27: [],
+    child28: [],
+  };
+
+  var resetInfo = {
+    total: xbArr.length,
+    def: 1,
+    max: 5000,
+    now: 0
+  };
+
+  for(var i = 0; i < resetInfo.total; i++) {
+    if(resetInfo.now >= resetInfo.max) {
+      resetInfo.now = 0;
+      resetInfo.def = resetInfo.def + 1;
+    }
+    commonObj["child" + resetInfo.def].push(xbArr[i]);
+    resetInfo.now++;
+  }
+
+  for(var j = 0; j < 25; j++) {
+    console.log(JSON.stringify(commonObj["child" + j]));
+  }
+
+</script>
+</html>
